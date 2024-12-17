@@ -1,2 +1,2 @@
-# AlgoArena
-Battle DSA problems in the arena.
+# SCM
+Application to smartly manage your contacts.
