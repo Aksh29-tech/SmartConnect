@@ -1,0 +1,16 @@
+{
+  "name": "smartconnect",
+  "version": "1.0.0",
+  "description": "Application to smartly manage your contacts.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
