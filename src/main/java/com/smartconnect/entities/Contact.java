@@ -1,11 +1,11 @@
 package com.smartconnect.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,23 +13,29 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@AllArgsConstructor
 public class Contact {
-    @Id
-    private String contactId;
-    private String contactName; 
-    private String contactEmail;
-    private String contactPhoneNumber;
-    private String contactAddress;
-    private String contactPicture;
-    @Column(length = 10000)
-    private String contactDescription;
-    private boolean isFavorite=false;
-    private String contactWebsiteLink;
-    private String contactLinkedinLink;
 
-    // @ManyToOne
-    // private User user;
+    @Id
+    private String id;
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private String address;
+    private String picture;
+    @Column(length = 1000)
+    private String description;
+    private boolean favorite = false;
+    private String websiteLink;
+    private String linkedInLink;
+    // private List<String> socialLinks=new ArrayList<>();
+    private String cloudinaryImagePublicId;
+    @ManyToOne
+    @JsonIgnore
+    private User user;
+
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<SocialLink> links = new ArrayList<>();
+
 }
